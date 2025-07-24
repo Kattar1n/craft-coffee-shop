@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import CoffeeShopLogo from './CoffeeShopLogo';
-import { useCurrency } from '../context/CurrencyContext';
+import { useCurrency } from './context/CurrencyContext';
 
 const HeaderContainer = styled.header`
   background-color: var(--color-primary);
