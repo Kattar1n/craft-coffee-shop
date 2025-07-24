@@ -1,16 +1,12 @@
 import React from "react";
-import CoffeeCard from "../components/CoffeeCard";
+import CoffeeWrapper from "../components/CoffeeWrapper";
 
-const HomePage = async () => {
+const HomePage = () => {
 
-    const coffees = await fetch("http://localhost:3000/posts/1")
-    .then()
 
-    console.log(coffees)
 return(
     <div>
-        <CoffeeCard title={"1"}></CoffeeCard>
-        Hello World
+        <CoffeeWrapper/>
     </div>
 )}
 
