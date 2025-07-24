@@ -9,7 +9,9 @@ const CoffeePage = () => {
 return(
     <StyledPage>
         <Header/>
-        <CoffeeWrapper/>
+        <main>
+            <CoffeeWrapper/>
+        </main>
         <Footer/>
     </StyledPage>
 )}
