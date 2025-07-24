@@ -16,7 +16,9 @@ const ErrorPage = () => {
   return (
     <StyledPage>
         <Header/>
-        <StyledErrorWrapper>404<br/>გვერდი არ მოიძებნა</StyledErrorWrapper>
+        <main>
+            <StyledErrorWrapper>404<br/>გვერდი არ მოიძებნა</StyledErrorWrapper>
+        </main>
         <Footer/>
     </StyledPage>
   )
