@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, Outlet } from 'react-router'
 import styled from 'styled-components'
 
-const StyledHeaderWrapper = styled.div`
+const StyledHeaderWrapper = styled.header`
 height: 50px;
 width: 100%;
 background: #3E2F2F;
