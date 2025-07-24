@@ -1,7 +1,7 @@
 import React from "react";
 import { StyledCoffeeCard } from "./styled";
 
-const CoffeeCard = (id, title, ingredientIds, description, isInStock) => {
+const CoffeeCard = ({id, title, ingredientIds, description, isInStock}) => {
 
 return(
     <StyledCoffeeCard>
