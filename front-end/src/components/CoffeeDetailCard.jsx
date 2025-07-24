@@ -1,25 +1,101 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router'
 import styled from 'styled-components'
 
+const StyledLink = styled(Link)`
+color: #3E2723;
+text-decoration: none;
+margin: 0 10px;
+`
+
 const StyledDetailWrapper = styled.div`
+  color: #3E2723;
   border-radius: 20px;
   margin: 0 auto;
-  width: 90%;
-  min-height: 400px;
+  min-width: 340px;
+  max-width: 680px;
+  min-height: 440px;
   background-color: aliceblue;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+`
+const StyledCoffeePicture = styled.div`
+  margin: 20px;
+  height: 400px;
+  width: 300px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+`
+const StyledCoffeeInformation = styled.div`
+  width: 300px;
+  height: 400px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+`
+
+const StyledCoffeeTitle = styled.span`
+  font-size: 32px;
+  height: 100px;
+  font-weight: bold;
+`
+const StyledCoffeeDescription = styled.span`
+  font-size: 16px;
+  height: 180px;
+`
+const StyledCoffeeIngredients = styled.span`
+  font-size: 16px;
+  height: 100px;
+`
+const InStock = styled.span`
+  font-size: 20px;
+  color: #8E9775;
+  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`
+const NotInStock = styled.span`
+  font-size: 20px;
+  color: #B76E37;
+  font-weight: bold;
 `
 
 const CoffeeDetailCard = ({ id }) => {
   const [coffee, setCoffee] = useState({})
-      useEffect(() => {
-          fetch(`http://localhost:3000/coffees/${id}`)
-          .then(data => data.json())
-          .then(res => setCoffee(res))
-          .catch(() => setCoffee({title: 'არ მოიძებნა'}))
-      }, [id])
+  const [ingredients, setIngredients] = useState([])
+  const [usedIngredients, setUsedIngredients] = useState([])
+  const [price, setPrice] = useState(0)
+  useEffect(() => {
+      fetch(`http://localhost:3000/coffees/${id}`)
+      .then(data => data.json())
+      .then(res => setCoffee(res))
+      .catch(() => setCoffee({title: 'არ მოიძებნა'}))
+
+      fetch("http://localhost:3000/ingredients")
+      .then(data => data.json())
+      .then(res => setIngredients(res))
+      .then(() => setUsedIngredients(ingredients.filter(ing => coffee.ingredientIds.includes(ing.id))))
+
+      let newPrice = 0
+      for(let i = 0; i < usedIngredients.length; i++){
+          newPrice += usedIngredients[i].price
+      }
+      newPrice = newPrice.toFixed(2)
+      setPrice(newPrice)
+  }, [])
 
   return (
-    <StyledDetailWrapper>{coffee.title}</StyledDetailWrapper>
+    <StyledDetailWrapper>
+      <StyledCoffeePicture></StyledCoffeePicture>
+      <StyledCoffeeInformation>
+        <StyledCoffeeTitle>{coffee.title}</StyledCoffeeTitle>
+        <StyledCoffeeDescription>აღწერა: {coffee.description}</StyledCoffeeDescription>
+        <StyledCoffeeIngredients>ინგრედიენტები: {usedIngredients.map(ing => ing.name).join(', ')}</StyledCoffeeIngredients>
+        {!!coffee.isInStock && <InStock><span>მარაგშია</span><span>{price}</span></InStock> || <NotInStock>არ არის მარაგში</NotInStock>}
+      </StyledCoffeeInformation>
+    </StyledDetailWrapper>
   )
 }
 
