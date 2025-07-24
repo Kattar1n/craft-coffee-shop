@@ -7,3 +7,9 @@ export const StyledCoffeeCard = styled.div`
     text-align: center;
     color: black;
 `
+export const StyledCoffeeWrapper = styled.div`
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+`
