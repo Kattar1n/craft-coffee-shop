@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
-export const coffeeCard = styled.div`
+export const StyledCoffeeCard = styled.div`
     width: 200px;
-    height: 400px;
-    background: rgba(0, 0, 0, 0.2);
+    height: 300px;
+    background: rgba(0, 0, 0, 0.1);
+    text-align: center;
+    color: black;
 `
