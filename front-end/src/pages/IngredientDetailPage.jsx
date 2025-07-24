@@ -9,6 +9,9 @@ const IngredientDetailPage = () => {
   return (
     <StyledPage>
         <Header/>
+        <main>
+            
+        </main>
         <Footer/>
     </StyledPage>
   )
