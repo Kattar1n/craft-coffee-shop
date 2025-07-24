@@ -13,7 +13,9 @@ const CoffeeDetailPage = () => {
   return (
     <StyledPage>
         <Header/>
-        <CoffeeDetailCard key={coffeeId} id={coffeeId}/>
+        <main>
+            <CoffeeDetailCard key={coffeeId} id={coffeeId}/>
+        </main>
         <Footer/>
     </StyledPage>
   )
