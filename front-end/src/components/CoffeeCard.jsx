@@ -35,10 +35,15 @@ const StyledInfo = styled.div`
 `
 
 const InStock = styled.span`
+    font-size: 20px;
     color: #8E9775;
     font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 `
 const NotInStock = styled.span`
+    font-size: 20px;
     color: #B76E37;
     font-weight: bold;
 `
@@ -46,20 +51,28 @@ const NotInStock = styled.span`
 const CoffeeCard = ({id, title, ingredientIds, description, isInStock}) => {
 
     const [ingredients, setIngredients] = useState([])
-        useEffect(() => {
-            fetch("http://localhost:3000/ingredients")
-            .then(data => data.json())
-            .then(res => setIngredients(res))
-        }, [])
-    const usedIngredients = ingredients.filter(ing => ingredientIds.includes(ing.id))
+    const [usedIngredients, setUsedIngredients] = useState([])
+    useEffect(() => {
+        fetch("http://localhost:3000/ingredients")
+        .then(data => data.json())
+        .then(res => setIngredients(res))
+        .then(() => setUsedIngredients(ingredients.filter(ing => ingredientIds.includes(ing.id))))
+
+    }, [])
+
+    let price = 0
+    for(let i = 0; i < usedIngredients.length; i++){
+        price += usedIngredients[i].price
+    }
+    price = price.toFixed(2)
 return(
     <StyledLink to={`/coffee/${id}`}>
     <StyledCoffeeCard>
         <StyledTitle>{title}</StyledTitle>
         <StyledInfo>
         <span>აღწერა: {description}</span>
-        <span>ინგრედიენტები: {usedIngredients.map((ing) => `${ing.name}`).join(', ')}</span>
-        {!!isInStock && <InStock><span>მარაგშია</span></InStock> || <NotInStock>არ არის მარაგში</NotInStock>}
+        <span>ინგრედიენტები: {usedIngredients.map((ing) => ing.name).join(', ')}</span>
+        {!!isInStock && <InStock><span>მარაგშია</span><span>{price}</span></InStock> || <NotInStock>არ არის მარაგში</NotInStock>}
         </StyledInfo>
     </StyledCoffeeCard>
     </StyledLink>
