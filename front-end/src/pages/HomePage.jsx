@@ -8,6 +8,9 @@ const HomePage = () => {
   return (
     <StyledPage>
         <Header/>
+        <main>
+            
+        </main>
         <Footer/>
     </StyledPage>
   )
