@@ -1,24 +1,48 @@
 import React from "react";
+import { Link } from "react-router";
 import styled from "styled-components";
 
+const StyledLink = styled(Link)`
+    text-decoration: none;
+`
+
 const StyledCoffeeCard = styled.div`
-    width: 200px;
+    color: #3E2723;
+    width: 300px;
     height: 300px;
-    background: rgba(0, 0, 0, 0.1);
+    background: #F5F0E6;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+`
+
+const StyledTitle = styled.span`
     text-align: center;
-    color: black;
+    margin: 10px auto;
+    font-size: 24px;
+    font-weight: bold;
+`
+const StyledInfo = styled.div`
+    margin: 10px auto;
+    max-width: 280px;
+    display: flex;
+    flex-direction: column;
 `
 
 const CoffeeCard = ({id, title, ingredientIds, description, isInStock}) => {
 
 return(
+    <StyledLink to={`/coffee/${id}`}>
     <StyledCoffeeCard>
-        <h2>{title}</h2>
-        <span>{ingredientIds}</span>
-        <span>{description}</span>
-        <span>{isInStock}</span>
-        <span>{id}</span>
+        <StyledTitle>{title}</StyledTitle>
+        <StyledInfo>
+        <span>აღწერა: {description}</span>
+        <span>ინგრედიენტები: {ingredientIds}</span>
+        </StyledInfo>
     </StyledCoffeeCard>
+    </StyledLink>
 )}
 
 export default CoffeeCard
