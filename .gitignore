@@ -22,3 +22,5 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+front-end/src/index.css
+front-end/src/App.css
