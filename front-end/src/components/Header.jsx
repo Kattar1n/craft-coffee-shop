@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 const StyledHeaderWrapper = styled.header`
 height: 50px;
-width: 100%;
+width: 100vw;
 background: #3E2F2F;
 display: flex;
 justify-content: space-evenly;
