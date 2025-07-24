@@ -1,8 +1,16 @@
 import React from 'react'
+import { StyledPage } from './Styled'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+// import styled from "styled-components";
 
 const IngredientDetailPage = () => {
+
   return (
-    <div>IngredientDetailPage</div>
+    <StyledPage>
+        <Header/>
+        <Footer/>
+    </StyledPage>
   )
 }
 
