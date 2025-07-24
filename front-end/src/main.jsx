@@ -1,14 +1,6 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App.jsx';
-import { CurrencyProvider } from './context/CurrencyContext.jsx';
-import GlobalStyles from './styles/GlobalStyles.js';
+import { createRoot } from 'react-dom/client'
+import App from './App.jsx'
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <GlobalStyles /> {/* Apply global styles first */}
-    <CurrencyProvider>
-      <App />
-    </CurrencyProvider>
-  </React.StrictMode>,
-);
+createRoot(document.getElementById('root')).render(
+    <App />
+)
