@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
 import styled from "styled-components";
 
@@ -29,17 +29,37 @@ const StyledInfo = styled.div`
     max-width: 280px;
     display: flex;
     flex-direction: column;
+    gap: 10px;
+    font-size: 14px;
+    text-align: start;
+`
+
+const InStock = styled.span`
+    color: #8E9775;
+    font-weight: bold;
+`
+const NotInStock = styled.span`
+    color: #B76E37;
+    font-weight: bold;
 `
 
 const CoffeeCard = ({id, title, ingredientIds, description, isInStock}) => {
 
+    const [ingredients, setIngredients] = useState([])
+        useEffect(() => {
+            fetch("http://localhost:3000/ingredients")
+            .then(data => data.json())
+            .then(res => setIngredients(res))
+        }, [])
+    const usedIngredients = ingredients.filter(ing => ingredientIds.includes(ing.id))
 return(
     <StyledLink to={`/coffee/${id}`}>
     <StyledCoffeeCard>
         <StyledTitle>{title}</StyledTitle>
         <StyledInfo>
         <span>აღწერა: {description}</span>
-        <span>ინგრედიენტები: {ingredientIds}</span>
+        <span>ინგრედიენტები: {usedIngredients.map((ing) => `${ing.name}`).join(', ')}</span>
+        {!!isInStock && <InStock><span>მარაგშია</span></InStock> || <NotInStock>არ არის მარაგში</NotInStock>}
         </StyledInfo>
     </StyledCoffeeCard>
     </StyledLink>
