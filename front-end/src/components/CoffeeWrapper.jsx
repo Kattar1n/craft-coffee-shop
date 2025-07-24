@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { StyledCoffeeWrapper } from './styled'
+import styled from 'styled-components'
 import CoffeeCard from './CoffeeCard'
+
+const StyledCoffeeWrapper = styled.div`
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+`
 
 const CoffeeWrapper = () => {
 
