@@ -1,0 +1,69 @@
+{
+  "ingredients": [
+    {
+      "id": "1",
+      "name": "Milk",
+      "price": 2.5,
+      "description": "Fresh whole milk",
+      "isInStock": true
+    },
+    {
+      "id": "2",
+      "name": "Espresso Beans",
+      "price": 5.0,
+      "description": "Premium Arabica beans",
+      "isInStock": true
+    },
+    {
+      "id": "3",
+      "name": "Chocolate Syrup",
+      "price": 3.0,
+      "description": "Rich chocolate flavor",
+      "isInStock": true
+    },
+    {
+      "id": "4",
+      "name": "Caramel Sauce",
+      "price": 3.5,
+      "description": "Sweet caramel drizzle",
+      "isInStock": true
+    },
+    {
+      "id": "5",
+      "name": "Whipped Cream",
+      "price": 1.5,
+      "description": "Light and fluffy whipped cream",
+      "isInStock": false
+    }
+  ],
+  "coffees": [
+    {
+      "id": "c1",
+      "title": "Frappuccino",
+      "ingredientIds": ["1", "2", "3", "5"],
+      "description": "A classic iced coffee blend with milk, espresso, chocolate syrup, and whipped cream.",
+      "isInStock": true
+    },
+    {
+      "id": "c2",
+      "title": "Cafe Mocha",
+      "ingredientIds": ["1", "2", "3"],
+      "description": "Rich espresso with steamed milk and chocolate syrup, topped with a delicate foam.",
+      "isInStock": true
+    },
+    {
+      "id": "c3",
+      "title": "Caramel Macchiato",
+      "ingredientIds": ["1", "2", "4"],
+      "description": "Espresso with steamed milk, vanilla syrup, and a caramel drizzle.",
+      "isInStock": true
+    },
+    {
+      "id": "c4",
+      "title": "Americano",
+      "ingredientIds": ["2"],
+      "description": "Simple yet satisfying: espresso shots topped with hot water.",
+      "isInStock": true
+    }
+  ]
+}
