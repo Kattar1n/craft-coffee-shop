@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import CoffeeCard from './CoffeeCard'
 
 const StyledWrapper = styled.div`
+    text-align: center;
+    position: relative;
     color: #3E2723;
     width: 90%;
     margin: 0 auto;
@@ -16,7 +18,7 @@ const StyledCoffeeWrapper = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
     gap: 20px;
-    justify-content: space-between;
+    justify-content: center;
 `
 
 const CoffeeWrapper = () => {
