@@ -71,7 +71,7 @@ const IngredientDetailCard = ({ id }) => {
         setIngredient(res)
         setLoading(false)
       })
-  }, [])
+  }, [id])
 
   if(loading) return <StyledLoadingText>იტვირთება...</StyledLoadingText>
 

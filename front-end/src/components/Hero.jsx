@@ -5,6 +5,7 @@ import { Link } from 'react-router'
 
 const StyledHeroWrapper = styled.div`
 position: relative;
+top: 0;
 width: 100%;
 height: 300px;
 display: flex;

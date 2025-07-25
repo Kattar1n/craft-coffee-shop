@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyledPage } from './Styled'
+import { StyledMainSection, StyledPage } from './Styled'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { useParams } from 'react-router'
@@ -13,9 +13,9 @@ const CoffeeDetailPage = () => {
   return (
     <StyledPage>
         <Header/>
-        <main>
+        <StyledMainSection>
             <CoffeeDetailCard key={coffeeId} id={coffeeId}/>
-        </main>
+        </StyledMainSection>
         <Footer/>
     </StyledPage>
   )

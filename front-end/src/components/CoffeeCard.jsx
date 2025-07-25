@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router";
 import styled from "styled-components";
 import cardImage from '/assets/main/coffeeCard.jpg'
-import { useExchangeRates } from "../hooks/useExchangeRates";
+import { CoffeeContext } from "../contexts/CoffeeContextProvider";
 import useLocalStorage from "../hooks/useLocalStorage";
 
 const StyledLink = styled(Link)`
@@ -67,18 +67,10 @@ const NotInStock = styled.span`
 `
 
 const CoffeeCard = ({id, title, ingredientIds, description, isInStock}) => {
-    
-    const [exchangeRate, setExchangeRate] = useLocalStorage('rate', "GEL")
 
-    const [ingredients, setIngredients] = useState([])
+    const {ingredients, loading} = useContext(CoffeeContext)
     const [usedIngredients, setUsedIngredients] = useState([])
     const [coffeePrice, setCoffeePrice] = useState(0)
-
-    useEffect(() => {
-        fetch("http://localhost:3000/ingredients")
-        .then(data => data.json())
-        .then(res => setIngredients(res))
-    }, [])
 
     useEffect(() => {
         setUsedIngredients(ingredients.filter(ing => ingredientIds.includes(ing.id)))
@@ -89,6 +81,7 @@ const CoffeeCard = ({id, title, ingredientIds, description, isInStock}) => {
         setCoffeePrice(total.toFixed(2))
     }, [usedIngredients])
 
+    if(loading) return <StyledCoffeeCard><StyledTitle>იტვირთება...</StyledTitle></StyledCoffeeCard>
 
 return(
     <StyledLink to={`/coffee/${id}`}>

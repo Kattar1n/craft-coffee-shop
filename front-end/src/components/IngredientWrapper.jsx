@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import IngredientCard from './IngredientCard'
 import { StyledLoadingText } from '../pages/Styled'
+import { CoffeeContext } from '../contexts/CoffeeContextProvider'
 
 const StyledWrapper = styled.div`
     text-align: center;
@@ -23,16 +24,7 @@ const StyledIngredientWrapper = styled.div`
 `
 
 const IngredientWrapper = () => {
-    const [ingredients, setIngredients] = useState([])
-    const [loading, setLoading] = useState(true)
-    useEffect(() => {
-        fetch("http://localhost:3000/ingredients")
-        .then(data => data.json())
-        .then(res => {
-            setIngredients(res)
-            setLoading(false)
-        })
-    }, [])
+    const { ingredients, loading } = useContext(CoffeeContext)
 
     if(loading) return <StyledLoadingText>იტვირთება...</StyledLoadingText>
 

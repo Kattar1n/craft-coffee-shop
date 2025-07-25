@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledPage } from './Styled'
+import { StyledMainSection, StyledPage } from './Styled'
 import CoffeeWrapper from "../components/CoffeeWrapper";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -9,9 +9,9 @@ const CoffeePage = () => {
 return(
     <StyledPage>
         <Header/>
-        <main>
+        <StyledMainSection>
                 <CoffeeWrapper/>
-        </main>
+        </StyledMainSection>
         <Footer/>
     </StyledPage>
 )}

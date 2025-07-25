@@ -1,9 +1,11 @@
-import { createContext, useState } from "react"
+import { createContext, useEffect, useState } from "react"
 
 export const CoffeeContext = createContext()
 
 export const CoffeeContextProvider = ({children}) => {
     const [coffees, setCoffees] = useState([])
+    const [ingredients, setIngredients] = useState([])
+    const [coffeePrices, setCoffeePrices] = useState([])
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
@@ -14,9 +16,22 @@ export const CoffeeContextProvider = ({children}) => {
             setLoading(false)
         })
     }, [])
+    useEffect(() => {
+        fetch("http://localhost:3000/ingredients")
+        .then(data => data.json())
+        .then(res => {
+            setIngredients(res)
+            setLoading(false)
+        })
+    }, [])
 
+    useEffect(() => {
+        const prices = []
+        coffees.forEach(coffee => prices.push(coffee.id))
+        setCoffeePrices(prices)
+    }, [coffees, ingredients])
     return (
-        <CoffeeContext.Provider value={{coffees, loading}}>
+        <CoffeeContext.Provider value={{coffees, ingredients, coffeePrices, loading}}>
             {children}
         </CoffeeContext.Provider>
     )

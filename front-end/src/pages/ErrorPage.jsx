@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyledPage } from './Styled'
+import { StyledMainSection, StyledPage } from './Styled'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 
@@ -17,9 +17,9 @@ const ErrorPage = () => {
   return (
     <StyledPage>
         <Header/>
-        <main>
+        <StyledMainSection>
             <StyledErrorWrapper>404<br/>გვერდი არ მოიძებნა</StyledErrorWrapper>
-        </main>
+        </StyledMainSection>
         <Footer/>
     </StyledPage>
   )

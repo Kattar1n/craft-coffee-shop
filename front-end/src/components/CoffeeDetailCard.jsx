@@ -13,7 +13,7 @@ margin: 0 10px;
 const StyledDetailWrapper = styled.div`
   color: #3E2723;
   border-radius: 20px;
-  margin: 0 auto;
+  margin: 20px auto;
   min-width: 340px;
   max-width: 680px;
   min-height: 440px;
@@ -79,7 +79,7 @@ const CoffeeDetailCard = ({ id }) => {
     .then(data => data.json())
     .then(res => setCoffee(res))
     .catch(() => setCoffee({title: 'არ მოიძებნა'}))
-  }, [])
+  }, [id])
   useEffect(() => {
     fetch("http://localhost:3000/ingredients")
     .then(data => data.json())

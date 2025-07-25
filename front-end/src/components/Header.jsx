@@ -2,10 +2,11 @@ import React from 'react'
 import { Link, Outlet } from 'react-router'
 import styled from 'styled-components'
 import useLocalStorage from '../hooks/useLocalStorage'
-import { useExchangeRates } from '../hooks/useExchangeRates'
 
 const StyledHeaderWrapper = styled.header`
+position: relative;
 height: 50px;
+top: 0;
 left: 0;
 right: 0;
 background: #3E2F2F;

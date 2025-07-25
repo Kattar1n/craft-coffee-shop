@@ -1,6 +1,5 @@
 import React from 'react'
-import { StyledPage } from './Styled'
-// import styled from "styled-components";
+import { StyledMainSection, StyledPage } from './Styled'
 import Header from '../components/Header'
 import Hero from '../components/Hero'
 import Footer from '../components/Footer'
@@ -10,10 +9,10 @@ const HomePage = () => {
   return (
     <StyledPage>
         <Header/>
-        <main>
+        <StyledMainSection>
           <Hero/>
           <HomeCoffeeWrapper/>
-        </main>
+        </StyledMainSection>
         <Footer/>
     </StyledPage>
   )
