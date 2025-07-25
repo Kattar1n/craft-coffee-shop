@@ -1,0 +1,119 @@
+{
+  "ingredients": [
+    {
+      "id": "1",
+      "name": "რძე",
+      "price": 0.80,
+      "description": "ახალი სრული რძე",
+      "picture": "/assets/ingredients/milk.jpg",
+      "isInStock": true
+    },
+    {
+      "id": "2",
+      "name": "ესპრესო მარცვლები",
+      "price": 2.40,
+      "description": "პრემიუმ არაბიკას მარცვლები",
+      "picture": "/assets/ingredients/espressoBeans.jpg",
+      "isInStock": true
+    },
+    {
+      "id": "3",
+      "name": "შოკოლადის სიროფი",
+      "price": 1.00,
+      "description": "მდიდარი შოკოლადის არომატი",
+      "picture": "/assets/ingredients/chocolateSyrup.jpg",
+      "isInStock": true
+    },
+    {
+      "id": "4",
+      "name": "კარამელის სოუსი",
+      "price": 1.25,
+      "description": "ტკბილი კარამელის ჩანხატი",
+      "picture": "/assets/ingredients/caramelSauce.jpg",
+      "isInStock": true
+    },
+    {
+      "id": "5",
+      "name": "შეფუთული ნაღები",
+      "price": 0.95,
+      "description": "მსუბუქი და ფაფუკი ნაღები",
+      "picture": "/assets/ingredients/whippedCream.jpg",
+      "isInStock": false
+    },
+    {
+      "id": "6",
+      "name": "ვანილის სიროფი",
+      "price": 0.85,
+      "description": "ტკბილი ვანილის სიროფი",
+      "picture": "/assets/ingredients/vanillaSyrup.jpg",
+      "isInStock": true
+    },
+    {
+      "id": "7",
+      "name": "ყინული",
+      "price": 0.15,
+      "description": "ყინულის კუბი",
+      "picture": "/assets/ingredients/iceCubes.jpg",
+      "isInStock": true
+    },
+    {
+      "id": "8",
+      "name": "დარიჩინი",
+      "price": 0.40,
+      "description": "არომატული დაფქული დარიჩინი",
+      "picture": "/assets/ingredients/cinnamon.jpg",
+      "isInStock": true
+    }
+  ],
+  "coffees": [
+    {
+      "id": "c1",
+      "title": "ფრაპუჩინო",
+      "ingredientIds": ["1", "2", "3", "5"],
+      "description": "კლასიკური ცივი ყავა რძით, ესპრესოთი, შოკოლადის სიროფით და შეფუთული ნაღებით.",
+      "isInStock": true
+    },
+    {
+      "id": "c2",
+      "title": "კაფე მოჩა",
+      "ingredientIds": ["1", "2", "3"],
+      "description": "მდიდარი ესპრესო, ორთქლმოხდილი რძითა და შოკოლადის სიროფით, მსუბუქი ქაფით დაფარული.",
+      "isInStock": false
+    },
+    {
+      "id": "c3",
+      "title": "კარამელ მაკიატო",
+      "ingredientIds": ["1", "2", "4"],
+      "description": "ესპრესო ორთქლმოხდილი რძით, ვანილის სიროფით და კარამელის ჩანხატით.",
+      "isInStock": true
+    },
+    {
+      "id": "c4",
+      "title": "ამერიკანო",
+      "ingredientIds": ["2"],
+      "description": "მარტივი, მაგრამ დამაკმაყოფილებელი: ესპრესო შოთები ცხელ წყალში.",
+      "isInStock": true
+    },
+    {
+      "id": "c5",
+      "title": "ვანილის ლატე",
+      "ingredientIds": ["1", "2", "6"],
+      "description": "ესპრესო რძით და ტკბილი ვანილის სიროფით, ნაზი გემოთი.",
+      "isInStock": true
+    },
+    {
+      "id": "c6",
+      "title": "აისდ კოფი",
+      "ingredientIds": ["2", "7"],
+      "description": "ცივი ესპრესო ყინულის კუბებით - გამაგრილებელი და ენერგიული.",
+      "isInStock": true
+    },
+    {
+      "id": "c7",
+      "title": "დარიჩინიანი კაპუჩინო",
+      "ingredientIds": ["1", "2", "8"],
+      "description": "ესპრესო რძით და დარიჩინით - სურნელოვანი და ცხელი სასმელი.",
+      "isInStock": false
+    }
+  ]
+}
