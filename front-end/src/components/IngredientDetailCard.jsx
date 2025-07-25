@@ -74,7 +74,7 @@ const IngredientDetailCard = ({ id }) => {
       <StyledIngredientInformation>
         <StyledIngredientName>{ingredient.name}</StyledIngredientName>
         <StyledIngredientDescription>აღწერა: {ingredient.description}</StyledIngredientDescription>
-        {!!ingredient.isInStock && <InStock><span>მარაგშია</span><span>{ingredient.price}</span></InStock> || <NotInStock>არ არის მარაგში</NotInStock>}
+        {!!ingredient.isInStock && <InStock><span>მარაგშია</span><span>₾{ingredient.price}</span></InStock> || <NotInStock>არ არის მარაგში</NotInStock>}
       </StyledIngredientInformation>
     </StyledDetailWrapper>
   )
