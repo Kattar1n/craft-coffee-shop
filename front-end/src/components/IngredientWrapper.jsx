@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import IngredientCard from './IngredientCard'
+import { StyledLoadingText } from '../pages/Styled'
 
 const StyledWrapper = styled.div`
     text-align: center;
@@ -22,7 +23,6 @@ const StyledIngredientWrapper = styled.div`
 `
 
 const IngredientWrapper = () => {
-
     const [ingredients, setIngredients] = useState([])
     const [loading, setLoading] = useState(true)
     useEffect(() => {
