@@ -24,11 +24,17 @@ const StyledIngredientWrapper = styled.div`
 const IngredientWrapper = () => {
 
     const [ingredients, setIngredients] = useState([])
+    const [loading, setLoading] = useState(true)
     useEffect(() => {
         fetch("http://localhost:3000/ingredients")
         .then(data => data.json())
-        .then(res => setIngredients(res))
+        .then(res => {
+            setIngredients(res)
+            setLoading(false)
+        })
     }, [])
+
+    if(loading) return <StyledLoadingText>იტვირთება...</StyledLoadingText>
 
   return (
     <StyledWrapper>
