@@ -65,13 +65,20 @@ const NotInStock = styled.span`
   font-weight: bold;
 `;
 
-const CoffeeCard = ({ id, title, ingredientIds, description, isInStock, price }) => {
+const CoffeeCard = ({
+  id,
+  title,
+  ingredientIds,
+  description,
+  isInStock,
+  price,
+}) => {
   const { ingredients, loading } = useContext(CoffeeContext);
   const [usedIngredients, setUsedIngredients] = useState([]);
 
   useEffect(() => {
     setUsedIngredients(
-      ingredients.filter((ing) => ingredientIds.includes(ing.id)),
+      ingredients.filter((ing) => ingredientIds.includes(ing.id))
     );
   }, [ingredients, ingredientIds]);
 

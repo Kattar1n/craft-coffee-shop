@@ -80,10 +80,10 @@ const NotInStock = styled.span`
 `;
 
 const IngredientDetailCard = ({ id }) => {
-  const {ingredients, loading} = useContext(CoffeeContext)
+  const { ingredients, loading } = useContext(CoffeeContext);
   const [ingredient, setIngredient] = useState({});
   useEffect(() => {
-    setIngredient(ingredients.find(ing => ing.id == id))
+    setIngredient(ingredients.find((ing) => ing.id == id));
   }, [ingredients, id]);
 
   if (loading) return <StyledLoadingText>იტვირთება...</StyledLoadingText>;

@@ -5,5 +5,5 @@ import { CoffeeContextProvider } from "./contexts/CoffeeContextProvider.jsx";
 createRoot(document.getElementById("root")).render(
   <CoffeeContextProvider>
     <App />
-  </CoffeeContextProvider>,
+  </CoffeeContextProvider>
 );

@@ -1,7 +1,7 @@
-import React from "react";
-import { Link, Outlet } from "react-router";
+import React, { useContext } from "react";
+import { Link } from "react-router";
 import styled from "styled-components";
-import useLocalStorage from "../hooks/useLocalStorage";
+import { CoffeeContext } from "../contexts/CoffeeContext";
 
 const StyledHeaderWrapper = styled.header`
   position: relative;
@@ -20,7 +20,7 @@ const StyledLinkWrapper = styled.header`
 `;
 const StyledLinkText = styled.span`
   line-height: 30px;
-`
+`;
 const StyledHomeLinkWrapper = styled.header`
   display: flex;
   flex-direction: row;
@@ -42,11 +42,11 @@ const StyledLink = styled(Link)`
 const StyledLogo = styled.div`
   height: 30px;
   width: 30px;
-  background-image: url('/assets/main/icon.png');
+  background-image: url("/assets/main/icon.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-`
+`;
 const StyledCurrencyButton = styled.button`
   margin: 10px;
   height: 30px;
@@ -66,25 +66,31 @@ const StyledCurrencyButton = styled.button`
 `;
 
 const Header = () => {
-  const [rate, setRate] = useLocalStorage("rate", "GEL");
+  const { rate, setRate } = useContext(CoffeeContext);
 
-  const changeRate = () => {
-  if (rate === "GEL") setRate("USD");
-  else if (rate === "USD") setRate("GEL");
+  const setExchangeRate = () => {
+    if (rate === "GEL") setRate("USD");
+    if (rate === "USD") setRate("EUR");
+    if (rate === "EUR") setRate("GEL");
   };
 
   return (
     <StyledHeaderWrapper>
       <StyledLink to={"/"}>
         <StyledHomeLinkWrapper>
-          <StyledLogo/><StyledLinkText>მთავარი</StyledLinkText>
+          <StyledLogo />
+          <StyledLinkText>მთავარი</StyledLinkText>
         </StyledHomeLinkWrapper>
       </StyledLink>
       <StyledLinkWrapper>
-        <StyledLink to={"/coffee"}><StyledLinkText>ყავა</StyledLinkText></StyledLink>
-        <StyledLink to={"/ingredients"}><StyledLinkText>ინგრედიენტები</StyledLinkText></StyledLink>
+        <StyledLink to={"/coffee"}>
+          <StyledLinkText>ყავა</StyledLinkText>
+        </StyledLink>
+        <StyledLink to={"/ingredients"}>
+          <StyledLinkText>ინგრედიენტები</StyledLinkText>
+        </StyledLink>
       </StyledLinkWrapper>
-      <StyledCurrencyButton onClick={changeRate}>
+      <StyledCurrencyButton onClick={setExchangeRate}>
         {rate}
       </StyledCurrencyButton>
     </StyledHeaderWrapper>

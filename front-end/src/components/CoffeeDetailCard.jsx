@@ -101,7 +101,7 @@ const CoffeeDetailCard = ({ id }) => {
     if (!coffee?.ingredientIds) return;
 
     setUsedIngredients(
-      ingredients.filter((ing) => coffee.ingredientIds.includes(ing.id)),
+      ingredients.filter((ing) => coffee.ingredientIds.includes(ing.id))
     );
   }, [ingredients, coffee]);
 
