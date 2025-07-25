@@ -5,7 +5,7 @@
       "name": "რძე",
       "price": 0.80,
       "description": "ახალი სრული რძე",
-      "picture": "./front-end/src/assets/ingredients/milk.jpg",
+      "picture": "/assets/ingredients/milk.jpg",
       "isInStock": true
     },
     {
@@ -13,7 +13,7 @@
       "name": "ესპრესო მარცვლები",
       "price": 2.40,
       "description": "პრემიუმ არაბიკას მარცვლები",
-      "picture": "./front-end/src/assets/ingredients/espressoBeans.jpg",
+      "picture": "/assets/ingredients/espressoBeans.jpg",
       "isInStock": true
     },
     {
@@ -21,7 +21,7 @@
       "name": "შოკოლადის სიროფი",
       "price": 1.00,
       "description": "მდიდარი შოკოლადის არომატი",
-      "picture": "./front-end/src/assets/ingredients/chocolateSyrup.jpg",
+      "picture": "/assets/ingredients/chocolateSyrup.jpg",
       "isInStock": true
     },
     {
@@ -29,7 +29,7 @@
       "name": "კარამელის სოუსი",
       "price": 1.25,
       "description": "ტკბილი კარამელის ჩანხატი",
-      "picture": "./front-end/src/assets/ingredients/caramelSauce.jpg",
+      "picture": "/assets/ingredients/caramelSauce.jpg",
       "isInStock": true
     },
     {
@@ -37,7 +37,7 @@
       "name": "შეფუთული ნაღები",
       "price": 0.95,
       "description": "მსუბუქი და ფაფუკი ნაღები",
-      "picture": "./front-end/src/assets/ingredients/whippedCream.jpg",
+      "picture": "/assets/ingredients/whippedCream.jpg",
       "isInStock": false
     },
     {
@@ -45,7 +45,7 @@
       "name": "ვანილის სიროფი",
       "price": 0.85,
       "description": "ტკბილი ვანილის სიროფი",
-      "picture": "./front-end/src/assets/ingredients/vanillaSyrup.jpg",
+      "picture": "/assets/ingredients/vanillaSyrup.jpg",
       "isInStock": true
     },
     {
@@ -53,7 +53,7 @@
       "name": "ყინული",
       "price": 0.15,
       "description": "ყინულის კუბი",
-      "picture": "./front-end/src/assets/ingredients/iceCubes.jpg",
+      "picture": "/assets/ingredients/iceCubes.jpg",
       "isInStock": true
     },
     {
@@ -61,7 +61,7 @@
       "name": "დარიჩინი",
       "price": 0.40,
       "description": "არომატული დაფქული დარიჩინი",
-      "picture": "./front-end/src/assets/ingredients/cinnamon.jpg",
+      "picture": "/assets/ingredients/cinnamon.jpg",
       "isInStock": true
     }
   ],
