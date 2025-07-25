@@ -17,6 +17,11 @@ const StyledCoffeeCard = styled.div`
     flex-direction: column;
     justify-content: space-between;
     gap: 10px;
+    transition: 300ms ease;
+
+    &:hover{
+        background: #F0E5D8;
+    }
 `
 
 const StyledTitle = styled.span`
@@ -25,10 +30,8 @@ const StyledTitle = styled.span`
     font-size: 24px;
     font-weight: bold;
 `
-// const StyledImage = styled.img`
-//     max-height: 160px;
-// `
 const StyledImage = styled.div`
+    margin: 10px;
     min-height: 160px;
     min-width: 280px;
     background-image: url(${cardImage});
@@ -85,8 +88,9 @@ const CoffeeCard = ({id, title, ingredientIds, description, isInStock}) => {
 return(
     <StyledLink to={`/coffee/${id}`}>
     <StyledCoffeeCard>
-        <StyledTitle>{title}</StyledTitle>
+        <StyledTitle>{title} <br />
         <StyledImage></StyledImage>
+        </StyledTitle>
         <StyledInfo>
         <span>აღწერა: {description}</span>
         <span>ინგრედიენტები: {usedIngredients.map((ing) => ing.name).join(', ')}</span>
