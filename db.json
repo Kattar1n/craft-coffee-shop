@@ -3,56 +3,56 @@
     {
       "id": "1",
       "name": "რძე",
-      "price": 0.30,
+      "price": 0.80,
       "description": "ახალი სრული რძე",
       "isInStock": true
     },
     {
       "id": "2",
       "name": "ესპრესო მარცვლები",
-      "price": 0.80,
+      "price": 2.40,
       "description": "პრემიუმ არაბიკას მარცვლები",
       "isInStock": true
     },
     {
       "id": "3",
       "name": "შოკოლადის სიროფი",
-      "price": 0.40,
+      "price": 1.00,
       "description": "მდიდარი შოკოლადის არომატი",
       "isInStock": true
     },
     {
       "id": "4",
       "name": "კარამელის სოუსი",
-      "price": 0.50,
+      "price": 1.25,
       "description": "ტკბილი კარამელის ჩანხატი",
       "isInStock": true
     },
     {
       "id": "5",
       "name": "შეფუთული ნაღები",
-      "price": 0.35,
+      "price": 0.95,
       "description": "მსუბუქი და ფაფუკი ნაღები",
       "isInStock": false
     },
     {
       "id": "6",
       "name": "ვანილის სიროფი",
-      "price": 0.30,
+      "price": 0.85,
       "description": "ტკბილი ვანილის სიროფი",
       "isInStock": true
     },
     {
       "id": "7",
       "name": "ყინული",
-      "price": 0.05,
+      "price": 0.15,
       "description": "ყინულის კუბი",
       "isInStock": true
     },
     {
       "id": "8",
       "name": "დარიჩინი",
-      "price": 0.15,
+      "price": 0.40,
       "description": "არომატული დაფქული დარიჩინი",
       "isInStock": true
     }
