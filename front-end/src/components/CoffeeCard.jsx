@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
 import styled from "styled-components";
-import cardImage from '../assets/card.jpg'
+import cardImage from '../assets/coffeeCard.jpg'
 
 const StyledLink = styled(Link)`
     text-decoration: none;
@@ -25,8 +25,16 @@ const StyledTitle = styled.span`
     font-size: 24px;
     font-weight: bold;
 `
-const StyledImage = styled.img`
-    max-height: 160px;
+// const StyledImage = styled.img`
+//     max-height: 160px;
+// `
+const StyledImage = styled.div`
+    min-height: 160px;
+    min-width: 280px;
+    background-image: url(${cardImage});
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
 `
 
 const StyledInfo = styled.div`
@@ -78,7 +86,8 @@ return(
     <StyledLink to={`/coffee/${id}`}>
     <StyledCoffeeCard>
         <StyledTitle>{title}</StyledTitle>
-        <StyledImage src={cardImage}/>
+        <StyledImage></StyledImage>
+        {/* <StyledImage src={cardImage}/> */}
         <StyledInfo>
         <span>აღწერა: {description}</span>
         <span>ინგრედიენტები: {usedIngredients.map((ing) => ing.name).join(', ')}</span>
