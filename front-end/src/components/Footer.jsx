@@ -9,11 +9,20 @@ const StyledFooterWrapper = styled.footer`
     color: #FAF9F6;
     display: grid;
 `
+const StyledCopyrightText = styled.span`
+  font-size: 12px;
+  margin: 10px;
+  width: calc(100% - 20px);
+`
 
 const Footer = () => {
   return (
-    <StyledFooterWrapper>Footer</StyledFooterWrapper>
-  )
-}
+    <StyledFooterWrapper>
+      <StyledCopyrightText>
+      © 2025 Craft Coffee Shop. All rights reserved. <br />
+      Unauthorized use, reproduction, or distribution of any content, images, or materials from Craft Coffee Shop is strictly prohibited without prior written permission
+    </StyledCopyrightText>
+</StyledFooterWrapper>
+)}
 
 export default Footer
