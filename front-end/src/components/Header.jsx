@@ -12,17 +12,26 @@ const StyledHeaderWrapper = styled.header`
   background: #3e2f2f;
   display: flex;
   justify-content: space-between;
-  line-height: 50px;
 `;
 const StyledLinkWrapper = styled.header`
   display: flex;
   justify-content: space-evenly;
   width: 100%;
 `;
+const StyledLinkText = styled.span`
+  line-height: 30px;
+`
+const StyledHomeLinkWrapper = styled.header`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 10px;
+  width: min-content;
+`;
 const StyledLink = styled(Link)`
   color: #faf9f6;
   text-decoration: none;
-  margin: 0 10px;
+  margin: 10px 10px;
   font-weight: bold;
   transition: 250ms ease;
 
@@ -30,6 +39,14 @@ const StyledLink = styled(Link)`
     color: #b76e37;
   }
 `;
+const StyledLogo = styled.div`
+  height: 30px;
+  width: 30px;
+  background-image: url('/assets/main/icon.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+`
 const StyledCurrencyButton = styled.button`
   margin: 10px;
   height: 30px;
@@ -58,10 +75,14 @@ const Header = () => {
 
   return (
     <StyledHeaderWrapper>
+      <StyledLink to={"/"}>
+        <StyledHomeLinkWrapper>
+          <StyledLogo/><StyledLinkText>მთავარი</StyledLinkText>
+        </StyledHomeLinkWrapper>
+      </StyledLink>
       <StyledLinkWrapper>
-        <StyledLink to={"/"}>მთავარი</StyledLink>
-        <StyledLink to={"/coffee"}>ყავა</StyledLink>
-        <StyledLink to={"/ingredients"}>ინგრედიენტები</StyledLink>
+        <StyledLink to={"/coffee"}><StyledLinkText>ყავა</StyledLinkText></StyledLink>
+        <StyledLink to={"/ingredients"}><StyledLinkText>ინგრედიენტები</StyledLinkText></StyledLink>
       </StyledLinkWrapper>
       <StyledCurrencyButton onClick={changeRate}>
         {rate}

@@ -13,14 +13,20 @@ const StyledLink = styled(Link)`
 const StyledDetailWrapper = styled.div`
   color: #3e2723;
   border-radius: 20px;
-  margin: 0 auto;
-  min-width: 340px;
-  max-width: 680px;
-  min-height: 440px;
+  margin: 20px auto;
   background-color: #f0e5d8;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+
+  @media only screen and (min-width: 700px) {
+    width: 680px;
+    height: 440px;
+  }
+  @media only screen and (max-width: 700px) {
+    width: 340px;
+    height: 660px;
+  }
 `;
 const StyledIngredientPicture = styled.div`
   margin: 20px;
@@ -41,13 +47,24 @@ const StyledIngredientInformation = styled.div`
   flex-direction: column;
 `;
 const StyledIngredientName = styled.span`
-  font-size: 32px;
-  height: 100px;
+  font-size: 28px;
   font-weight: bold;
+
+  @media only screen and (min-width: 700px) {
+    height: 200px;
+  }
+  @media only screen and (max-width: 700px) {
+    height: 80px;
+  }
 `;
 const StyledIngredientDescription = styled.span`
   font-size: 16px;
-  height: 180px;
+  @media only screen and (min-width: 700px) {
+    height: 200px;
+  }
+  @media only screen and (max-width: 700px) {
+    height: 80px;
+  }
 `;
 const InStock = styled.span`
   font-size: 20px;

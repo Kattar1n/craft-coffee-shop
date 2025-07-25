@@ -18,9 +18,9 @@ const StyledHeroWrapper = styled.div`
 const StyledHeroShadow = styled(Link)`
   position: absolute;
   top: 0;
-  left: -20vw;
+  left: -25vw;
   width: 90vw;
-  height: 120vw;
+  height: 130vw;
   rotate: -45deg;
   background: rgba(0, 0, 0, 0.3);
   z-index: 1;

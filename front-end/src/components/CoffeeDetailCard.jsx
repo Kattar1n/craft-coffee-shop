@@ -15,13 +15,18 @@ const StyledDetailWrapper = styled.div`
   color: #3e2723;
   border-radius: 20px;
   margin: 20px auto;
-  min-width: 340px;
-  max-width: 680px;
   min-height: 440px;
   background-color: #f0e5d8;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+
+  @media only screen and (min-width: 700px) {
+    width: 680px;
+  }
+  @media only screen and (max-width: 700px) {
+    width: 340px;
+  }
 `;
 const StyledCoffeePicture = styled.div`
   margin: 20px;
@@ -36,24 +41,40 @@ const StyledCoffeePicture = styled.div`
 `;
 const StyledCoffeeInformation = styled.div`
   width: 300px;
-  height: 400px;
   margin: 20px;
   display: flex;
   flex-direction: column;
+  @media only screen and (min-width: 700px) {
+    height: 400px;
+  }
+  @media only screen and (max-width: 700px) {
+    height: 220px;
+  }
 `;
 
 const StyledCoffeeTitle = styled.span`
   font-size: 32px;
-  height: 100px;
   font-weight: bold;
+
+  @media only screen and (min-width: 700px) {
+    height: 180px;
+  }
+  @media only screen and (max-width: 700px) {
+    height: 60px;
+  }
 `;
 const StyledCoffeeDescription = styled.span`
   font-size: 16px;
-  height: 180px;
+  @media only screen and (min-width: 700px) {
+    height: 160px;
+  }
+  @media only screen and (max-width: 700px) {
+    height: 100px;
+  }
 `;
 const StyledCoffeeIngredients = styled.span`
   font-size: 16px;
-  height: 100px;
+  height: 60px;
 `;
 const InStock = styled.span`
   font-size: 20px;
