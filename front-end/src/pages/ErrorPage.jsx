@@ -9,6 +9,7 @@ const StyledErrorWrapper = styled.div`
     text-align: center;
     line-height: 30vh;
     font-size: 72px;
+    color: red;
 `
 
 
