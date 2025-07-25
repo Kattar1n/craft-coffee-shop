@@ -14,6 +14,11 @@ const StyledIngredientCard = styled.div`
     flex-direction: column;
     justify-content: space-between;
     gap: 10px;
+    transition: 300ms ease;
+
+    &:hover{
+        background: #F0E5D8;
+    }
 `
 
 const StyledName = styled.span`
@@ -23,6 +28,7 @@ const StyledName = styled.span`
     font-weight: bold;
 `
 const StyledImage = styled.div`
+    margin: 10px;
     min-height: 200px;
     min-width: 280px;
     background-image: url(${(props) => props.$picture});
@@ -59,8 +65,9 @@ const IngredientCard = ({id, name, price, description, picture, isInStock}) => {
 return(
     <StyledLink to={`/ingredients/${id}`}>
     <StyledIngredientCard>
-        <StyledName>{name}</StyledName>
+        <StyledName>{name} <br />
         <StyledImage $picture={picture}></StyledImage>
+        </StyledName>
         <StyledInfo>
         <span>აღწერა: {description}</span>
         {!!isInStock && <InStock><span>მარაგშია</span><span>{price}</span></InStock> || <NotInStock>არ არის მარაგში</NotInStock>}
