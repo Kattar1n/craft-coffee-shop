@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router'
 import styled from 'styled-components'
+import cardImage from '../assets/coffeeDetail.jpg'
 
 const StyledLink = styled(Link)`
 color: #3E2723;
@@ -26,6 +27,10 @@ const StyledCoffeePicture = styled.div`
   width: 300px;
   background: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
+  background-image: url(${cardImage});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 `
 const StyledCoffeeInformation = styled.div`
   width: 300px;
