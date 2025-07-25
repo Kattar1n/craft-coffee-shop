@@ -15,6 +15,12 @@ const StyledLink = styled(Link)`
 color: #FAF9F6;
 text-decoration: none;
 margin: 0 10px;
+font-weight: bold;
+transition: 250ms ease;
+
+&:hover{
+  color: #B76E37;
+}
 `
 
 const Header = () => {
