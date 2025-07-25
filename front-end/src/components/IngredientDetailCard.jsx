@@ -26,6 +26,10 @@ const StyledIngredientPicture = styled.div`
   width: 300px;
   background: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
+  background-image: url(${(props) => props.$picture});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 `
 const StyledIngredientInformation = styled.div`
   width: 300px;
@@ -57,17 +61,16 @@ const NotInStock = styled.span`
 `
 
 const IngredientDetailCard = ({ id }) => {
-  const [ingredient, setIngredient] = useState([])
+  const [ingredient, setIngredient] = useState({})
   useEffect(() => {
-
-      fetch(`http://localhost:3000/ingredients/${id}`)
+    fetch(`http://localhost:3000/ingredients/${id}`)
       .then(data => data.json())
       .then(res => setIngredient(res))
   }, [])
 
   return (
-    <StyledDetailWrapper>
-      <StyledIngredientPicture></StyledIngredientPicture>
+  <StyledDetailWrapper>
+    <StyledIngredientPicture $picture={ingredient.picture} />
       <StyledIngredientInformation>
         <StyledIngredientName>{ingredient.name}</StyledIngredientName>
         <StyledIngredientDescription>აღწერა: {ingredient.description}</StyledIngredientDescription>
