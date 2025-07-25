@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import IngredientCard from "./IngredientCard";
 import { StyledLoadingText } from "../pages/Styled";
-import { CoffeeContext } from "../contexts/CoffeeContextProvider";
+import { CoffeeContext } from "../contexts/CoffeeContext";
 
 const StyledWrapper = styled.div`
   text-align: center;

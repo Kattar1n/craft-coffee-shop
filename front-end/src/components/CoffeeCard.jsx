@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router";
 import styled from "styled-components";
 import cardImage from "/assets/main/coffeeCard.jpg";
-import { CoffeeContext } from "../contexts/CoffeeContextProvider";
+import { CoffeeContext } from "../contexts/CoffeeContext";
 
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -65,21 +65,15 @@ const NotInStock = styled.span`
   font-weight: bold;
 `;
 
-const CoffeeCard = ({ id, title, ingredientIds, description, isInStock }) => {
+const CoffeeCard = ({ id, title, ingredientIds, description, isInStock, price }) => {
   const { ingredients, loading } = useContext(CoffeeContext);
   const [usedIngredients, setUsedIngredients] = useState([]);
-  const [coffeePrice, setCoffeePrice] = useState(0);
 
   useEffect(() => {
     setUsedIngredients(
       ingredients.filter((ing) => ingredientIds.includes(ing.id)),
     );
   }, [ingredients, ingredientIds]);
-
-  useEffect(() => {
-    const total = usedIngredients.reduce((sum, ing) => sum + ing.price, 2);
-    setCoffeePrice(total.toFixed(2));
-  }, [usedIngredients]);
 
   if (loading)
     return (
@@ -103,7 +97,7 @@ const CoffeeCard = ({ id, title, ingredientIds, description, isInStock }) => {
           {(!!isInStock && (
             <InStock>
               <span>მარაგშია</span>
-              <span>₾{coffeePrice}</span>
+              <span>{price}</span>
             </InStock>
           )) || <NotInStock>არ არის მარაგში</NotInStock>}
         </StyledInfo>

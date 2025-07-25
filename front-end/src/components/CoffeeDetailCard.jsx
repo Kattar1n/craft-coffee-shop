@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router";
 import styled from "styled-components";
 import cardImage from "/assets/main/coffeeDetail.jpg";
 import { StyledLoadingText } from "../pages/Styled";
+import { CoffeeContext } from "../contexts/CoffeeContext";
 
 const StyledLink = styled(Link)`
   color: #3e2723;
@@ -69,32 +70,19 @@ const NotInStock = styled.span`
 `;
 
 const CoffeeDetailCard = ({ id }) => {
+  const { coffees, ingredients, loading } = useContext(CoffeeContext);
   const [coffee, setCoffee] = useState({});
-  const [loading, setLoading] = useState(true);
-  const [ingredients, setIngredients] = useState([]);
   const [usedIngredients, setUsedIngredients] = useState([]);
-  const [coffeePrice, setCoffeePrice] = useState(2);
   useEffect(() => {
-    fetch(`http://localhost:3000/coffees/${id}`)
-      .then((data) => data.json())
-      .then((res) => setCoffee(res))
-      .catch(() => setCoffee({ title: "არ მოიძებნა" }));
-  }, [id]);
+    setCoffee(coffees.find((coffee) => coffee.id == id));
+  }, [coffees, id]);
   useEffect(() => {
-    fetch("http://localhost:3000/ingredients")
-      .then((data) => data.json())
-      .then((res) => setIngredients(res));
-  }, [coffee]);
-  useEffect(() => {
+    if (!coffee?.ingredientIds) return;
+
     setUsedIngredients(
       ingredients.filter((ing) => coffee.ingredientIds.includes(ing.id)),
     );
-  }, [ingredients, coffee.ingredientIds]);
-  useEffect(() => {
-    const total = usedIngredients.reduce((sum, ing) => sum + ing.price, 2);
-    setCoffeePrice(total.toFixed(2));
-    setLoading(false);
-  }, [usedIngredients]);
+  }, [ingredients, coffee]);
 
   if (loading) return <StyledLoadingText>იტვირთება...</StyledLoadingText>;
 
@@ -102,17 +90,17 @@ const CoffeeDetailCard = ({ id }) => {
     <StyledDetailWrapper>
       <StyledCoffeePicture></StyledCoffeePicture>
       <StyledCoffeeInformation>
-        <StyledCoffeeTitle>{coffee.title}</StyledCoffeeTitle>
+        <StyledCoffeeTitle>{coffee?.title}</StyledCoffeeTitle>
         <StyledCoffeeDescription>
-          აღწერა: {coffee.description}
+          აღწერა: {coffee?.description}
         </StyledCoffeeDescription>
         <StyledCoffeeIngredients>
           ინგრედიენტები: {usedIngredients.map((ing) => ing.name).join(", ")}
         </StyledCoffeeIngredients>
-        {(!!coffee.isInStock && (
+        {(!!coffee?.isInStock && (
           <InStock>
             <span>მარაგშია</span>
-            <span>₾{coffeePrice}</span>
+            <span>₾{coffee?.price}</span>
           </InStock>
         )) || <NotInStock>არ არის მარაგში</NotInStock>}
       </StyledCoffeeInformation>

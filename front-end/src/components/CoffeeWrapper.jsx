@@ -1,8 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import CoffeeCard from "./CoffeeCard";
 import { StyledLoadingText } from "../pages/Styled";
-import { CoffeeContext } from "../contexts/CoffeeContextProvider";
+import { CoffeeContext } from "../contexts/CoffeeContext";
+import { useExchangeRates } from "../hooks/useExchangeRates";
 
 const StyledWrapper = styled.div`
   text-align: center;
@@ -39,6 +40,7 @@ const CoffeeWrapper = () => {
             ingredientIds={coffee.ingredientIds}
             description={coffee.description}
             isInStock={coffee.isInStock}
+            price={coffee.price}
           />
         ))}
       </StyledCoffeeWrapper>

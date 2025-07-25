@@ -1,33 +1,40 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 
-export function useExchangeRates(
-  baseCurrency = "GEL",
-  targetCurrencies = ["USD"],
-) {
-  const [rates, setRates] = useState({});
-  const [loadingPrice, setLoadingPrice] = useState(true);
+const API_KEY = "e95810a480335d3fd4d4b0cc";
 
-  const API_KEY = "184708e7058f2283c0d757e3";
+export const useExchangeRates = () => {
+  const [rates, setRates] = useState(null);
 
   useEffect(() => {
-    fetch(
-      `https://v6.exchangerate-api.com/v6/${API_KEY}/latest/${baseCurrency}`,
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        const selected = {};
-        targetCurrencies.forEach((cur) => {
-          selected[cur] = data.conversion_rates[cur];
+    const fetchRates = async () => {
+      try {
+        const response = await fetch(
+          `https://v6.exchangerate-api.com/v6/${API_KEY}/latest/GEL`
+        );
+        const data = await response.json();
+
+        if (data.result !== "success") throw new Error(data["error-type"]);
+
+        setRates({
+          GEL: 1,
+          USD: data.conversion_rates.USD,
+          EUR: data.conversion_rates.EUR,
         });
-        setRates(selected);
-        setLoadingPrice(false);
-      });
-  }, [baseCurrency, targetCurrencies]);
+      } catch (err) {
+        console.error("Failed to fetch exchange rates:", err);
 
-  const convert = (amount, currency) => {
-    if (!rates[currency]) return null;
-    return amount * rates[currency];
-  };
+        setRates({
+          GEL: 1,
+          USD: 0.36,
+          EUR: 0.34,
+        });
+      }
+    };
 
-  return { convert, loadingPrice, rates };
-}
+    fetchRates();
+  }, []);
+
+  return rates;
+};
+
+// შემთხვევით ინფინიტ ლუპში მოვხვდი და ტოკენის გამოყენების რაოდენობა ამომეწურა
