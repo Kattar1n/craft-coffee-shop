@@ -1,5 +1,4 @@
 import React from "react";
-import heroImage from "/assets/main/hero.png";
 import styled from "styled-components";
 import { Link } from "react-router";
 
@@ -9,7 +8,7 @@ const StyledHeroWrapper = styled.div`
   width: 100%;
   height: 300px;
   display: flex;
-  background-image: url(${heroImage});
+  background-image: url(/assets/main/hero.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
