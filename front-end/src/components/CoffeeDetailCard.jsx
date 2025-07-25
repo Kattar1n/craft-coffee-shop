@@ -98,7 +98,7 @@ const CoffeeDetailCard = ({ id }) => {
         <StyledCoffeeTitle>{coffee.title}</StyledCoffeeTitle>
         <StyledCoffeeDescription>აღწერა: {coffee.description}</StyledCoffeeDescription>
         <StyledCoffeeIngredients>ინგრედიენტები: {usedIngredients.map(ing => ing.name).join(', ')}</StyledCoffeeIngredients>
-        {!!coffee.isInStock && <InStock><span>მარაგშია</span><span>{price}</span></InStock> || <NotInStock>არ არის მარაგში</NotInStock>}
+        {!!coffee.isInStock && <InStock><span>მარაგშია</span><span>₾{price}</span></InStock> || <NotInStock>არ არის მარაგში</NotInStock>}
       </StyledCoffeeInformation>
     </StyledDetailWrapper>
   )
