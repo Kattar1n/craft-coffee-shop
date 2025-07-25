@@ -9,7 +9,7 @@ const StyledLink = styled(Link)`
 const StyledIngredientCard = styled.div`
     color: #3E2723;
     width: 300px;
-    height: 300px;
+    height: 400px;
     background: #F5F0E6;
     border-radius: 20px;
     display: flex;
@@ -23,6 +23,14 @@ const StyledName = styled.span`
     margin: 10px auto;
     font-size: 24px;
     font-weight: bold;
+`
+const StyledImage = styled.div`
+    min-height: 160px;
+    min-width: 280px;
+    background-image: url();
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
 `
 const StyledInfo = styled.div`
     margin: 10px auto;
@@ -48,12 +56,14 @@ const NotInStock = styled.span`
     font-weight: bold;
 `
 
-const IngredientCard = ({id, name, price, description, isInStock}) => {
+const IngredientCard = ({id, name, price, description, picture, isInStock}) => {
+    console.log(picture)
 
 return(
     <StyledLink to={`/ingredients/${id}`}>
     <StyledIngredientCard>
         <StyledName>{name}</StyledName>
+        <StyledImage></StyledImage>
         <StyledInfo>
         <span>აღწერა: {description}</span>
         {!!isInStock && <InStock><span>მარაგშია</span><span>{price}</span></InStock> || <NotInStock>არ არის მარაგში</NotInStock>}
