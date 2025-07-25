@@ -1,8 +1,10 @@
 import React from 'react'
 import heroImage from '../assets/hero.png'
 import styled from 'styled-components'
+import { Link } from 'react-router'
 
 const StyledHeroWrapper = styled.div`
+position: relative;
 width: 100%;
 height: 300px;
 display: flex;
@@ -12,29 +14,36 @@ background-repeat: no-repeat;
 background-position: center;
 overflow: hidden;
 `
-const StyledHeroShadow = styled.div`
-position: relative;
+const StyledHeroShadow = styled(Link)`
+position: absolute;
 top: 0;
 left: -20vw;
 width: 90vw;
 height: 120vw;
 rotate: -45deg;
 background: rgba(0, 0, 0, 0.3);
-z-index: 0;
+z-index: 1;
+transition: 1s ease;
+
+&:hover {
+  scale: 1.1;
+}
 `
 
 const StyledHeroText = styled.h1`
 position: relative;
-font-size: 3vw;
+line-height: 300px;
+left: 5%;
+font-size: 36px;
 color: #F5F0E6;
-z-index: 2;
+z-index: 0;
 `
 
 const Hero = () => {
   return (
     <StyledHeroWrapper>
-      <StyledHeroShadow></StyledHeroShadow>
-      <StyledHeroText>Craft Coffee Shop</StyledHeroText>
+      <StyledHeroShadow to={'/coffee'}></StyledHeroShadow>
+    <StyledHeroText>Craft Coffee Shop</StyledHeroText>
     </StyledHeroWrapper>
   )
 }
