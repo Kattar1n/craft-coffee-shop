@@ -1,5 +1,5 @@
 import React from 'react'
-import heroImage from '../assets/hero.png'
+import heroImage from '/assets/main/hero.png'
 import styled from 'styled-components'
 import { Link } from 'react-router'
 
