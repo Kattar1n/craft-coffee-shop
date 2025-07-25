@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router";
 import styled from "styled-components";
-import cardImage from "/assets/main/coffeeCard.jpg";
 import { CoffeeContext } from "../contexts/CoffeeContext";
 
 const StyledLink = styled(Link)`
@@ -35,7 +34,7 @@ const StyledImage = styled.div`
   margin: 10px;
   min-height: 160px;
   min-width: 280px;
-  background-image: url(${cardImage});
+  background-image: url(/assets/main/coffeeCard.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
