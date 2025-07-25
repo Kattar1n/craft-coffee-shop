@@ -22,7 +22,6 @@ const StyledIngredientWrapper = styled.div`
 `
 
 const IngredientWrapper = () => {
-
     const [ingredients, setIngredients] = useState([])
     const [loading, setLoading] = useState(true)
     useEffect(() => {
