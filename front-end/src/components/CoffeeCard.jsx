@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
 import styled from "styled-components";
-import cardImage from '../assets/coffeeCard.jpg'
+import cardImage from '/assets/main/coffeeCard.jpg'
 
 const StyledLink = styled(Link)`
     text-decoration: none;
