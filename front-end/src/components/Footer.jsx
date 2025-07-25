@@ -4,7 +4,8 @@ import styled from 'styled-components'
 const StyledFooterWrapper = styled.footer`
     background-color: #2E1C1C;
     margin-top: 10px;
-    width: 100%;
+    left: 0;
+    right: 0;
     color: #FAF9F6;
     display: grid;
 `
