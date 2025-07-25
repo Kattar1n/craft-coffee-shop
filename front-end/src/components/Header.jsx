@@ -49,15 +49,11 @@ const StyledCurrencyButton = styled.button`
 `;
 
 const Header = () => {
-  const [exchangeRate, setExchangeRate] = useLocalStorage("rate", "GEL");
+  const [rate, setRate] = useLocalStorage("rate", "GEL");
 
   const changeRate = () => {
-    if (exchangeRate === "GEL") {
-      setExchangeRate("USD");
-    }
-    if (exchangeRate === "USD") {
-      setExchangeRate("GEL");
-    }
+  if (rate === "GEL") setRate("USD");
+  else if (rate === "USD") setRate("GEL");
   };
 
   return (
@@ -68,7 +64,7 @@ const Header = () => {
         <StyledLink to={"/ingredients"}>ინგრედიენტები</StyledLink>
       </StyledLinkWrapper>
       <StyledCurrencyButton onClick={changeRate}>
-        {exchangeRate}
+        {rate}
       </StyledCurrencyButton>
     </StyledHeaderWrapper>
   );

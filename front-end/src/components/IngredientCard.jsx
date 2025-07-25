@@ -80,7 +80,7 @@ const IngredientCard = ({
           {(!!isInStock && (
             <InStock>
               <span>მარაგშია</span>
-              <span>₾{price}</span>
+              <span>{price}</span>
             </InStock>
           )) || <NotInStock>არ არის მარაგში</NotInStock>}
         </StyledInfo>

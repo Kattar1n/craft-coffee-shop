@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { CoffeeContext } from "./CoffeeContext";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { useExchangeRates } from "../hooks/useExchangeRates";
+import { getCurrencySymbol } from "../utils/currency";
 
 export const CoffeeContextProvider = ({ children }) => {
   const [coffeesWithoutPrices, setCoffeesWithoutPrices] = useState([]);
@@ -11,6 +12,7 @@ export const CoffeeContextProvider = ({ children }) => {
 
   const [rate] = useLocalStorage("rate", "GEL");
   const exchangeRates = useExchangeRates();
+  const symbol = getCurrencySymbol(rate);
   useEffect(() => {
     fetch("http://localhost:3000/coffees")
       .then((data) => data.json())
@@ -28,30 +30,29 @@ export const CoffeeContextProvider = ({ children }) => {
       });
   }, []);
   useEffect(() => {
-    // Wait until everything is ready
-    if (
-      coffeesWithoutPrices.length === 0 ||
-      ingredients.length === 0 ||
-      (rate !== "GEL" && !exchangeRates)
-    )
-      return;
+  if (
+    coffeesWithoutPrices.length === 0 ||
+    ingredients.length === 0 ||
+    (rate !== "GEL" && !exchangeRates)
+  )
+    return;
 
-    const conversionRate = rate === "GEL" ? 1 : exchangeRates?.[rate] || 1;
+  const conversionRate = rate === "GEL" ? 1 : exchangeRates?.[rate] || 1;
 
-    const coffeesWithPrices = coffeesWithoutPrices.map((coffee) => {
-      const totalPrice = coffee.ingredientIds.reduce((sum, id) => {
-        const ingredient = ingredients.find((ing) => ing.id === id);
-        return sum + (ingredient?.price || 0);
-      }, 2);
+  const coffeesWithPrices = coffeesWithoutPrices.map((coffee) => {
+    const totalPrice = coffee.ingredientIds.reduce((sum, id) => {
+      const ingredient = ingredients.find((ing) => ing.id === id);
+      return sum + (ingredient?.price || 0);
+    }, 2);
 
-      return {
-        ...coffee,
-        price: parseFloat((totalPrice * conversionRate).toFixed(2)),
-      };
-    });
+    return {
+      ...coffee,
+      price: `${symbol} ${parseFloat((totalPrice * conversionRate).toFixed(2))}`,
+    };
+  });
 
-    setCoffees(coffeesWithPrices);
-  }, [coffeesWithoutPrices, ingredients, exchangeRates, rate]);
+  setCoffees(coffeesWithPrices);
+}, [coffeesWithoutPrices, ingredients, exchangeRates, rate, symbol]);
 
   return (
     <CoffeeContext.Provider value={{ coffees, ingredients, loading }}>

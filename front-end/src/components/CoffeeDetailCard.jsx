@@ -100,7 +100,7 @@ const CoffeeDetailCard = ({ id }) => {
         {(!!coffee?.isInStock && (
           <InStock>
             <span>მარაგშია</span>
-            <span>₾{coffee?.price}</span>
+            <span>{coffee?.price}</span>
           </InStock>
         )) || <NotInStock>არ არის მარაგში</NotInStock>}
       </StyledCoffeeInformation>

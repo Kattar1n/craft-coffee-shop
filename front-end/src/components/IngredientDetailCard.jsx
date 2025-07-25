@@ -82,7 +82,7 @@ const IngredientDetailCard = ({ id }) => {
         {(!!ingredient?.isInStock && (
           <InStock>
             <span>მარაგშია</span>
-            <span>₾{ingredient?.price}</span>
+            <span>{ingredient?.price}</span>
           </InStock>
         )) || <NotInStock>არ არის მარაგში</NotInStock>}
       </StyledIngredientInformation>
