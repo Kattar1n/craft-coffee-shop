@@ -1,49 +1,51 @@
-import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
-import IngredientCard from './IngredientCard'
-import { StyledLoadingText } from '../pages/Styled'
+import React, { useContext } from "react";
+import styled from "styled-components";
+import IngredientCard from "./IngredientCard";
+import { StyledLoadingText } from "../pages/Styled";
+import { CoffeeContext } from "../contexts/CoffeeContext";
 
 const StyledWrapper = styled.div`
-    text-align: center;
-    position: relative;
-    color: #3E2723;
-    width: 90%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-`
+  text-align: center;
+  position: relative;
+  color: #3e2723;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+`;
 const StyledIngredientWrapper = styled.div`
-    margin: 0 auto;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-`
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+`;
 
 const IngredientWrapper = () => {
-    const [ingredients, setIngredients] = useState([])
-    const [loading, setLoading] = useState(true)
-    useEffect(() => {
-        fetch("http://localhost:3000/ingredients")
-        .then(data => data.json())
-        .then(res => {
-            setIngredients(res)
-            setLoading(false)
-        })
-    }, [])
+  const { ingredients, loading } = useContext(CoffeeContext);
 
-    if(loading) return <StyledLoadingText>იტვირთება...</StyledLoadingText>
+  if (loading) return <StyledLoadingText>იტვირთება...</StyledLoadingText>;
 
   return (
     <StyledWrapper>
-        <h1>ინგრედიენტების სია</h1>
-        <StyledIngredientWrapper>
-            {ingredients.map((ing) => <IngredientCard key={ing.id} id={ing.id} name={ing.name} price={ing.price} description={ing.description} picture={ing.picture} isInStock={ing.isInStock}/>)}
-        </StyledIngredientWrapper>
+      <h1>ინგრედიენტების სია</h1>
+      <StyledIngredientWrapper>
+        {ingredients.map((ing) => (
+          <IngredientCard
+            key={ing.id}
+            id={ing.id}
+            name={ing.name}
+            price={ing.price}
+            description={ing.description}
+            picture={ing.picture}
+            isInStock={ing.isInStock}
+          />
+        ))}
+      </StyledIngredientWrapper>
     </StyledWrapper>
-  )
-}
+  );
+};
 
-export default IngredientWrapper
+export default IngredientWrapper;
