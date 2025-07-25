@@ -15,7 +15,7 @@ const StyledDetailWrapper = styled.div`
   min-width: 340px;
   max-width: 680px;
   min-height: 440px;
-  background-color: aliceblue;
+  background-color: #F0E5D8;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
