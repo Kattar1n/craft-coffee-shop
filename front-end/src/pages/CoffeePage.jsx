@@ -1,19 +1,19 @@
 import React from "react";
-import { StyledMainSection, StyledPage } from './Styled'
+import { StyledMainSection, StyledPage } from "./Styled";
 import CoffeeWrapper from "../components/CoffeeWrapper";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 const CoffeePage = () => {
-
-return(
+  return (
     <StyledPage>
-        <Header/>
-        <StyledMainSection>
-                <CoffeeWrapper/>
-        </StyledMainSection>
-        <Footer/>
+      <Header />
+      <StyledMainSection>
+        <CoffeeWrapper />
+      </StyledMainSection>
+      <Footer />
     </StyledPage>
-)}
+  );
+};
 
-export default CoffeePage
+export default CoffeePage;

@@ -1,20 +1,20 @@
-import React from 'react'
-import { StyledMainSection, StyledPage } from './Styled'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
-import IngredientWrapper from '../components/IngredientWrapper'
+import React from "react";
+import { StyledMainSection, StyledPage } from "./Styled";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import IngredientWrapper from "../components/IngredientWrapper";
 // import styled from "styled-components";
 
 const IngredientPage = () => {
   return (
     <StyledPage>
-      <Header/>
+      <Header />
       <StyledMainSection>
-        <IngredientWrapper/>
+        <IngredientWrapper />
       </StyledMainSection>
-      <Footer/>
+      <Footer />
     </StyledPage>
-  )
-}
+  );
+};
 
-export default IngredientPage
+export default IngredientPage;

@@ -1,26 +1,26 @@
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router'
-import styled from 'styled-components'
-import { StyledLoadingText } from '../pages/Styled'
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router";
+import styled from "styled-components";
+import { StyledLoadingText } from "../pages/Styled";
 
 const StyledLink = styled(Link)`
-color: #3E2723;
-text-decoration: none;
-margin: 0 10px;
-`
+  color: #3e2723;
+  text-decoration: none;
+  margin: 0 10px;
+`;
 
 const StyledDetailWrapper = styled.div`
-  color: #3E2723;
+  color: #3e2723;
   border-radius: 20px;
   margin: 0 auto;
   min-width: 340px;
   max-width: 680px;
   min-height: 440px;
-  background-color: #F0E5D8;
+  background-color: #f0e5d8;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-`
+`;
 const StyledIngredientPicture = styled.div`
   margin: 20px;
   height: 400px;
@@ -31,60 +31,67 @@ const StyledIngredientPicture = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-`
+`;
 const StyledIngredientInformation = styled.div`
   width: 300px;
   height: 400px;
   margin: 20px;
   display: flex;
   flex-direction: column;
-`
+`;
 const StyledIngredientName = styled.span`
   font-size: 32px;
   height: 100px;
   font-weight: bold;
-`
+`;
 const StyledIngredientDescription = styled.span`
   font-size: 16px;
   height: 180px;
-`
+`;
 const InStock = styled.span`
   font-size: 20px;
-  color: #8E9775;
+  color: #8e9775;
   font-weight: bold;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-`
+`;
 const NotInStock = styled.span`
-  color: #B76E37;
+  color: #b76e37;
   font-weight: bold;
-`
+`;
 
 const IngredientDetailCard = ({ id }) => {
-  const [ingredient, setIngredient] = useState({})
-  const [loading, setLoading] = useState(true)
+  const [ingredient, setIngredient] = useState({});
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     fetch(`http://localhost:3000/ingredients/${id}`)
-      .then(data => data.json())
-      .then(res => {
-        setIngredient(res)
-        setLoading(false)
-      })
-  }, [id])
+      .then((data) => data.json())
+      .then((res) => {
+        setIngredient(res);
+        setLoading(false);
+      });
+  }, [id]);
 
-  if(loading) return <StyledLoadingText>იტვირთება...</StyledLoadingText>
+  if (loading) return <StyledLoadingText>იტვირთება...</StyledLoadingText>;
 
   return (
-  <StyledDetailWrapper>
-    <StyledIngredientPicture $picture={ingredient.picture} />
+    <StyledDetailWrapper>
+      <StyledIngredientPicture $picture={ingredient.picture} />
       <StyledIngredientInformation>
         <StyledIngredientName>{ingredient.name}</StyledIngredientName>
-        <StyledIngredientDescription>აღწერა: {ingredient.description}</StyledIngredientDescription>
-        {!!ingredient.isInStock && <InStock><span>მარაგშია</span><span>₾{ingredient.price}</span></InStock> || <NotInStock>არ არის მარაგში</NotInStock>}
+        <StyledIngredientDescription>
+          აღწერა: {ingredient.description}
+        </StyledIngredientDescription>
+        {(!!ingredient.isInStock && (
+          <InStock>
+            <span>მარაგშია</span>
+            <span>₾{ingredient.price}</span>
+          </InStock>
+        )) || <NotInStock>არ არის მარაგში</NotInStock>}
       </StyledIngredientInformation>
     </StyledDetailWrapper>
-  )
-}
+  );
+};
 
-export default IngredientDetailCard
+export default IngredientDetailCard;
