@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
 import styled from "styled-components";
+import cardImage from '../assets/card.jpg'
 
 const StyledLink = styled(Link)`
     text-decoration: none;
@@ -9,7 +10,7 @@ const StyledLink = styled(Link)`
 const StyledCoffeeCard = styled.div`
     color: #3E2723;
     width: 300px;
-    height: 300px;
+    height: 400px;
     background: #F5F0E6;
     border-radius: 20px;
     display: flex;
@@ -24,6 +25,10 @@ const StyledTitle = styled.span`
     font-size: 24px;
     font-weight: bold;
 `
+const StyledImage = styled.img`
+    max-height: 160px;
+`
+
 const StyledInfo = styled.div`
     margin: 10px auto;
     max-width: 280px;
@@ -52,23 +57,28 @@ const CoffeeCard = ({id, title, ingredientIds, description, isInStock}) => {
 
     const [ingredients, setIngredients] = useState([])
     const [usedIngredients, setUsedIngredients] = useState([])
+    const [price, setPrice] = useState(0)
     useEffect(() => {
         fetch("http://localhost:3000/ingredients")
         .then(data => data.json())
         .then(res => setIngredients(res))
-        .then(() => setUsedIngredients(ingredients.filter(ing => ingredientIds.includes(ing.id))))
-
     }, [])
 
-    let price = 0
-    for(let i = 0; i < usedIngredients.length; i++){
-        price += usedIngredients[i].price
-    }
-    price = price.toFixed(2)
+    useEffect(() => {
+    setUsedIngredients(ingredients.filter(ing => ingredientIds.includes(ing.id)))
+    }, [ingredients, ingredientIds])
+
+    useEffect(() => {
+    const total = usedIngredients.reduce((sum, ing) => sum + ing.price, 0)
+    setPrice(total.toFixed(2))
+    }, [usedIngredients])
+
+
 return(
     <StyledLink to={`/coffee/${id}`}>
     <StyledCoffeeCard>
         <StyledTitle>{title}</StyledTitle>
+        <StyledImage src={cardImage}/>
         <StyledInfo>
         <span>აღწერა: {description}</span>
         <span>ინგრედიენტები: {usedIngredients.map((ing) => ing.name).join(', ')}</span>
