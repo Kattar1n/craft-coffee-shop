@@ -7,3 +7,9 @@ export const StyledPage = styled.div`
     display: grid;
     grid-template-columns: 'header main footer';
 `
+export const StyledLoadingText = styled.div`
+    text-align: center;
+    line-height: 30vh;
+    font-size: 72px;
+    color: #3E2723;
+`

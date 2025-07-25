@@ -70,7 +70,7 @@ return(
         </StyledName>
         <StyledInfo>
         <span>აღწერა: {description}</span>
-        {!!isInStock && <InStock><span>მარაგშია</span><span>{price}</span></InStock> || <NotInStock>არ არის მარაგში</NotInStock>}
+        {!!isInStock && <InStock><span>მარაგშია</span><span>₾{price}</span></InStock> || <NotInStock>არ არის მარაგში</NotInStock>}
         </StyledInfo>
     </StyledIngredientCard>
     </StyledLink>

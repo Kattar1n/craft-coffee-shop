@@ -62,11 +62,17 @@ const NotInStock = styled.span`
 
 const IngredientDetailCard = ({ id }) => {
   const [ingredient, setIngredient] = useState({})
+  const [loading, setLoading] = useState(true)
   useEffect(() => {
     fetch(`http://localhost:3000/ingredients/${id}`)
       .then(data => data.json())
-      .then(res => setIngredient(res))
+      .then(res => {
+        setIngredient(res)
+        setLoading(false)
+      })
   }, [])
+
+  if(loading) return <StyledLoadingText>იტვირთება...</StyledLoadingText>
 
   return (
   <StyledDetailWrapper>
@@ -74,7 +80,7 @@ const IngredientDetailCard = ({ id }) => {
       <StyledIngredientInformation>
         <StyledIngredientName>{ingredient.name}</StyledIngredientName>
         <StyledIngredientDescription>აღწერა: {ingredient.description}</StyledIngredientDescription>
-        {!!ingredient.isInStock && <InStock><span>მარაგშია</span><span>{ingredient.price}</span></InStock> || <NotInStock>არ არის მარაგში</NotInStock>}
+        {!!ingredient.isInStock && <InStock><span>მარაგშია</span><span>₾{ingredient.price}</span></InStock> || <NotInStock>არ არის მარაგში</NotInStock>}
       </StyledIngredientInformation>
     </StyledDetailWrapper>
   )

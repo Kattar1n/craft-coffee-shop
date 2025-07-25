@@ -10,7 +10,7 @@ return(
     <StyledPage>
         <Header/>
         <main>
-            <CoffeeWrapper/>
+                <CoffeeWrapper/>
         </main>
         <Footer/>
     </StyledPage>
