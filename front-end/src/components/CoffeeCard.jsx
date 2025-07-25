@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
 import styled from "styled-components";
 import cardImage from '/assets/main/coffeeCard.jpg'
+import { useExchangeRates } from "../hooks/useExchangeRates";
 
 const StyledLink = styled(Link)`
     text-decoration: none;
@@ -68,7 +69,7 @@ const CoffeeCard = ({id, title, ingredientIds, description, isInStock}) => {
 
     const [ingredients, setIngredients] = useState([])
     const [usedIngredients, setUsedIngredients] = useState([])
-    const [price, setPrice] = useState(0)
+    const [coffeePrice, setCoffeePrice] = useState(0)
     useEffect(() => {
         fetch("http://localhost:3000/ingredients")
         .then(data => data.json())
@@ -76,12 +77,12 @@ const CoffeeCard = ({id, title, ingredientIds, description, isInStock}) => {
     }, [])
 
     useEffect(() => {
-    setUsedIngredients(ingredients.filter(ing => ingredientIds.includes(ing.id)))
+        setUsedIngredients(ingredients.filter(ing => ingredientIds.includes(ing.id)))
     }, [ingredients, ingredientIds])
 
     useEffect(() => {
-    const total = usedIngredients.reduce((sum, ing) => sum + ing.price, 0)
-    setPrice(total.toFixed(2))
+        const total = usedIngredients.reduce((sum, ing) => sum + ing.price, 2)
+        setCoffeePrice(total.toFixed(2))
     }, [usedIngredients])
 
 
@@ -94,7 +95,7 @@ return(
         <StyledInfo>
         <span>აღწერა: {description}</span>
         <span>ინგრედიენტები: {usedIngredients.map((ing) => ing.name).join(', ')}</span>
-        {!!isInStock && <InStock><span>მარაგშია</span><span>{price}</span></InStock> || <NotInStock>არ არის მარაგში</NotInStock>}
+        {!!isInStock && <InStock><span>მარაგშია</span><span>₾{coffeePrice}</span></InStock> || <NotInStock>არ არის მარაგში</NotInStock>}
         </StyledInfo>
     </StyledCoffeeCard>
     </StyledLink>
