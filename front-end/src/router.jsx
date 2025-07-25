@@ -1,3 +1,4 @@
+import path from "path";
 import Header from "./components/Header";
 import CoffeeDetailPage from "./pages/CoffeeDetailPage";
 import CoffeePage from "./pages/CoffeePage";
@@ -14,21 +15,26 @@ const router = [
     },
     {
         element: <CoffeePage/>,
+        errorElement: <ErrorPage/>,
         path: '/coffee'
     },
     {
         element: <IngredientPage/>,
+        errorElement: <ErrorPage/>,
         path: '/ingredients'
     },
     {
         element: <CoffeeDetailPage/>,
+        errorElement: <ErrorPage/>,
         path: '/coffee/:coffeeId'
     },
     {
         element: <IngredientDetailPage/>,
+        errorElement: <ErrorPage/>,
         path: '/ingredients/:ingredientId'
     },
     {
+        path: '',
         errorElement: <ErrorPage/>
     },
 ]
