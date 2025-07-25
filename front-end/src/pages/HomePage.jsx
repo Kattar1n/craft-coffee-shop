@@ -4,7 +4,7 @@ import { StyledPage } from './Styled'
 import Header from '../components/Header'
 import Hero from '../components/Hero'
 import Footer from '../components/Footer'
-import CoffeeWrapper from '../components/CoffeeWrapper'
+import HomeCoffeeWrapper from '../components/HomeCoffeeWrapper'
 
 const HomePage = () => {
   return (
@@ -12,7 +12,7 @@ const HomePage = () => {
         <Header/>
         <main>
           <Hero/>
-          <CoffeeWrapper/>
+          <HomeCoffeeWrapper/>
         </main>
         <Footer/>
     </StyledPage>
