@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
 import styled from "styled-components";
-
 const StyledLink = styled(Link)`
     text-decoration: none;
 `
@@ -25,12 +23,12 @@ const StyledName = styled.span`
     font-weight: bold;
 `
 const StyledImage = styled.div`
-    min-height: 160px;
+    min-height: 200px;
     min-width: 280px;
-    background-image: url();
+    background-image: url(${(props) => props.$picture});
     background-repeat: no-repeat;
     background-position: center;
-    background-size: contain;
+    background-size: cover;
 `
 const StyledInfo = styled.div`
     margin: 10px auto;
@@ -57,13 +55,12 @@ const NotInStock = styled.span`
 `
 
 const IngredientCard = ({id, name, price, description, picture, isInStock}) => {
-    console.log(picture)
 
 return(
     <StyledLink to={`/ingredients/${id}`}>
     <StyledIngredientCard>
         <StyledName>{name}</StyledName>
-        <StyledImage></StyledImage>
+        <StyledImage $picture={picture}></StyledImage>
         <StyledInfo>
         <span>აღწერა: {description}</span>
         {!!isInStock && <InStock><span>მარაგშია</span><span>{price}</span></InStock> || <NotInStock>არ არის მარაგში</NotInStock>}
