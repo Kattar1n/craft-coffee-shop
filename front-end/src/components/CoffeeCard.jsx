@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import styled from "styled-components";
 import cardImage from '/assets/main/coffeeCard.jpg'
 import { useExchangeRates } from "../hooks/useExchangeRates";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 const StyledLink = styled(Link)`
     text-decoration: none;
@@ -66,10 +67,13 @@ const NotInStock = styled.span`
 `
 
 const CoffeeCard = ({id, title, ingredientIds, description, isInStock}) => {
+    
+    const [exchangeRate, setExchangeRate] = useLocalStorage('rate', "GEL")
 
     const [ingredients, setIngredients] = useState([])
     const [usedIngredients, setUsedIngredients] = useState([])
     const [coffeePrice, setCoffeePrice] = useState(0)
+
     useEffect(() => {
         fetch("http://localhost:3000/ingredients")
         .then(data => data.json())
