@@ -69,9 +69,10 @@ const NotInStock = styled.span`
 
 const CoffeeDetailCard = ({ id }) => {
   const [coffee, setCoffee] = useState({})
+  const [loading, setLoading] = useState(true)
   const [ingredients, setIngredients] = useState([])
   const [usedIngredients, setUsedIngredients] = useState([])
-  const [price, setPrice] = useState(0)
+  const [coffeePrice, setCoffeePrice] = useState(2)
   useEffect(() => {
     fetch(`http://localhost:3000/coffees/${id}`)
     .then(data => data.json())
@@ -87,9 +88,12 @@ const CoffeeDetailCard = ({ id }) => {
     setUsedIngredients(ingredients.filter(ing => coffee.ingredientIds.includes(ing.id)))
   }, [ingredients, coffee.ingredientIds])
   useEffect(() => {
-    const total = usedIngredients.reduce((sum, ing) => sum + ing.price, 0)
-    setPrice(total.toFixed(2))
+    const total = usedIngredients.reduce((sum, ing) => sum + ing.price, 2)
+    setCoffeePrice(total.toFixed(2))
+    setLoading(false)
   }, [usedIngredients])
+
+  if(loading) return <StyledLoadingText>იტვირთება...</StyledLoadingText>
 
   return (
     <StyledDetailWrapper>
@@ -98,7 +102,7 @@ const CoffeeDetailCard = ({ id }) => {
         <StyledCoffeeTitle>{coffee.title}</StyledCoffeeTitle>
         <StyledCoffeeDescription>აღწერა: {coffee.description}</StyledCoffeeDescription>
         <StyledCoffeeIngredients>ინგრედიენტები: {usedIngredients.map(ing => ing.name).join(', ')}</StyledCoffeeIngredients>
-        {!!coffee.isInStock && <InStock><span>მარაგშია</span><span>₾{price}</span></InStock> || <NotInStock>არ არის მარაგში</NotInStock>}
+        {!!coffee.isInStock && <InStock><span>მარაგშია</span><span>₾{coffeePrice}</span></InStock> || <NotInStock>არ არის მარაგში</NotInStock>}
       </StyledCoffeeInformation>
     </StyledDetailWrapper>
   )
