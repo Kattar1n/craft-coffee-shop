@@ -94,7 +94,7 @@ return(
         <StyledInfo>
         <span>აღწერა: {description}</span>
         <span>ინგრედიენტები: {usedIngredients.map((ing) => ing.name).join(', ')}</span>
-        {!!isInStock && <InStock><span>მარაგშია</span><span>{price}</span></InStock> || <NotInStock>არ არის მარაგში</NotInStock>}
+        {!!isInStock && <InStock><span>მარაგშია</span><span>₾{price}</span></InStock> || <NotInStock>არ არის მარაგში</NotInStock>}
         </StyledInfo>
     </StyledCoffeeCard>
     </StyledLink>
