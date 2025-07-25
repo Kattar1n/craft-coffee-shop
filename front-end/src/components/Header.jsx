@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, Outlet } from 'react-router'
 import styled from 'styled-components'
 import useLocalStorage from '../hooks/useLocalStorage'
+import { useExchangeRates } from '../hooks/useExchangeRates'
 
 const StyledHeaderWrapper = styled.header`
 height: 50px;
@@ -47,6 +48,17 @@ transition: 100ms ease;
 `
 
 const Header = () => {
+  const [exchangeRate, setExchangeRate] = useLocalStorage('rate', "GEL")
+
+  const changeRate = () => {
+    if(exchangeRate === "GEL") {
+      setExchangeRate("USD")
+    }
+    if(exchangeRate === "USD") {
+      setExchangeRate("GEL")
+    }
+  }
+
   return (
     <StyledHeaderWrapper>
       <StyledLinkWrapper>
@@ -54,7 +66,7 @@ const Header = () => {
         <StyledLink to={'/coffee'}>ყავა</StyledLink>
         <StyledLink to={'/ingredients'}>ინგრედიენტები</StyledLink>
       </StyledLinkWrapper>
-      <StyledCurrencyButton>GEL</StyledCurrencyButton>
+      <StyledCurrencyButton onClick={changeRate}>{exchangeRate}</StyledCurrencyButton>
     </StyledHeaderWrapper>
   )
 }
