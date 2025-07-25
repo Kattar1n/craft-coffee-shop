@@ -44,7 +44,7 @@ const StyledImage = styled.div`
 
 const StyledInfo = styled.div`
     margin: 10px auto;
-    max-width: 280px;
+    width: 280px;
     display: flex;
     flex-direction: column;
     gap: 10px;

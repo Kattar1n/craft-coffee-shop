@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import CoffeeCard from './CoffeeCard'
+import { StyledLoadingText } from '../pages/Styled'
 
 const StyledWrapper = styled.div`
     text-align: center;
@@ -24,11 +25,17 @@ const StyledCoffeeWrapper = styled.div`
 const HomeCoffeeWrapper = () => {
 
     const [coffees, setCoffees] = useState([])
+    const [loading, setLoading] = useState(true)
     useEffect(() => {
         fetch("http://localhost:3000/coffees")
         .then(data => data.json())
-        .then(res => setCoffees(res))
+        .then(res => {
+            setCoffees(res)
+            setLoading(false)
+        })
     }, [])
+
+    if(loading) return <StyledLoadingText>იტვირთება...</StyledLoadingText>
 
   return (
     <StyledWrapper>
