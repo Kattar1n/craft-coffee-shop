@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router'
 import styled from 'styled-components'
 import cardImage from '/assets/main/coffeeDetail.jpg'
+import { StyledLoadingText } from '../pages/Styled'
 
 const StyledLink = styled(Link)`
 color: #3E2723;
