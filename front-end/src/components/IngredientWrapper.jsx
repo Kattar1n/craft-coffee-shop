@@ -34,7 +34,7 @@ const IngredientWrapper = () => {
     <StyledWrapper>
         <h1>ინგრედიენტების სია</h1>
         <StyledIngredientWrapper>
-            {ingredients.map((ing) => <IngredientCard key={ing.id} id={ing.id} name={ing.name} price={ing.price} description={ing.description} isInStock={ing.isInStock}/>)}
+            {ingredients.map((ing) => <IngredientCard key={ing.id} id={ing.id} name={ing.name} price={ing.price} description={ing.description} picture={ing.picture} isInStock={ing.isInStock}/>)}
         </StyledIngredientWrapper>
     </StyledWrapper>
   )
