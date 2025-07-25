@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router'
 import styled from 'styled-components'
-import cardImage from '../assets/coffeeDetail.jpg'
+import cardImage from '/assets/main/coffeeDetail.jpg'
 
 const StyledLink = styled(Link)`
 color: #3E2723;
