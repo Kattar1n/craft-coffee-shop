@@ -15,7 +15,7 @@ const StyledDetailWrapper = styled.div`
   min-width: 340px;
   max-width: 680px;
   min-height: 440px;
-  background-color: aliceblue;
+  background-color: #F0E5D8;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -68,23 +68,23 @@ const CoffeeDetailCard = ({ id }) => {
   const [usedIngredients, setUsedIngredients] = useState([])
   const [price, setPrice] = useState(0)
   useEffect(() => {
-      fetch(`http://localhost:3000/coffees/${id}`)
-      .then(data => data.json())
-      .then(res => setCoffee(res))
-      .catch(() => setCoffee({title: 'არ მოიძებნა'}))
-
-      fetch("http://localhost:3000/ingredients")
-      .then(data => data.json())
-      .then(res => setIngredients(res))
-      .then(() => setUsedIngredients(ingredients.filter(ing => coffee.ingredientIds.includes(ing.id))))
-
-      let newPrice = 0
-      for(let i = 0; i < usedIngredients.length; i++){
-          newPrice += usedIngredients[i].price
-      }
-      newPrice = newPrice.toFixed(2)
-      setPrice(newPrice)
+    fetch(`http://localhost:3000/coffees/${id}`)
+    .then(data => data.json())
+    .then(res => setCoffee(res))
+    .catch(() => setCoffee({title: 'არ მოიძებნა'}))
   }, [])
+  useEffect(() => {
+    fetch("http://localhost:3000/ingredients")
+    .then(data => data.json())
+    .then(res => setIngredients(res))
+  }, [coffee])
+  useEffect(() => {
+    setUsedIngredients(ingredients.filter(ing => coffee.ingredientIds.includes(ing.id)))
+  }, [ingredients, coffee.ingredientIds])
+  useEffect(() => {
+    const total = usedIngredients.reduce((sum, ing) => sum + ing.price, 0)
+    setPrice(total.toFixed(2))
+  }, [usedIngredients])
 
   return (
     <StyledDetailWrapper>
