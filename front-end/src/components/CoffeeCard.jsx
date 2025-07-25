@@ -87,7 +87,6 @@ return(
     <StyledCoffeeCard>
         <StyledTitle>{title}</StyledTitle>
         <StyledImage></StyledImage>
-        {/* <StyledImage src={cardImage}/> */}
         <StyledInfo>
         <span>აღწერა: {description}</span>
         <span>ინგრედიენტები: {usedIngredients.map((ing) => ing.name).join(', ')}</span>
